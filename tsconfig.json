@@ -1,0 +1,25 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+      "baseUrl": "./",
+      "lib": ["ES2022", "DOM", "DOM.Iterable"],
+      "target": "ES2022",
+      "module": "ES2022",
+      "moduleResolution": "node",
+      "isolatedModules": true,
+      "paths": {
+          "@/*": ["./src/*"],
+      },
+      "jsx": "preserve",
+      "allowJs": true,
+      "noImplicitAny": false,
+      "types": ["vite/client"]
+  },
+  "include": ["src/**/*", "typings.d.ts"],
+  "exclude": ["node_modules"],
+  "references": [
+      {
+          "path": "./tsconfig.config.json"
+      }
+  ]
+}

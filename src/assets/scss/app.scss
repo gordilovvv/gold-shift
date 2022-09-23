@@ -1,0 +1,27 @@
+@import './core/core.scss';
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Inter",Arial,sans-serif;
+    color: var(--color-typo-base);
+    font-size: var(--text-body-font-size);
+    font-weight: var(--text-body-font-weight);
+    line-height: var(--text-body-line-height);
+}
+
+#app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
