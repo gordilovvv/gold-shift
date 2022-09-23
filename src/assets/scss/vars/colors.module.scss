@@ -1,14 +1,11 @@
 .colors {
-    --color-base: #0D0F11;
-    --color-essential: #FFFFFF;
-    --color-primary: #503ADA;
-    --color-secondary: #F4F980;
+    --color-base: #FFFFFF;
+    --color-essential: #0B0D10;
+    --color-project: #FEC404;
+    --color-gradient: linear-gradient(145.44deg, #DC8AFF 41.16%, #7EE8FF 102.8%), #FFFFFF;
+    --color-surface: #23262A;
 
-    --color-typo-base: #0D0F11;
-    --color-typo-inverse: #FFFFFF;
-    --color-typo-ghost: #A3A2AA;
-    --color-typo-gray: #EAE9EE;
-    --color-typo-surface: #7B8085;
-
-    --color-hover-primary: #402EAE;
+    --color-typo-base: #FFFFFF;
+    --color-typo-inverse: #0B0D10;
+    --color-typo-ghost: #7E8286;
 }
