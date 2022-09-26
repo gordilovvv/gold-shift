@@ -1,0 +1,15 @@
+.title {
+    position: relative;
+    font-size: var(--text-headline-l-font-size);
+    font-weight: var(--text-headline-l-font-weight);
+    line-height: var(--text-headline-l-line-height);
+    letter-spacing: -0.03em;
+
+    span {
+        position: absolute;
+        top: 0;
+        left: calc(100% + 1px);
+        display: flex;
+        color: var(--color-project)
+    }
+}

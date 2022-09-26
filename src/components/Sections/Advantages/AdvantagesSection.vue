@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUpdate } from 'vue';
 import VContainer from '../../Container/VContainer.vue';
-import VIcon from '@/components/Icon/VIcon';
+import SectionTitle from '@/components/Title/SectionTitle';
 import AdvantageCard from './Card/AdvantageCard.vue';
 import { advantages } from '@/config/advantages';
 
@@ -38,7 +38,9 @@ const handleCardRefMount = (key: string, component: any) => {
     >
         <VContainer>
             <div :class="styles.head">
-                <h2 :class="styles.title">Преимущества <span><VIcon name="badge" /></span></h2>
+                <SectionTitle badge="badge">
+                    Преимущества
+                </SectionTitle>
             </div>
 
             <div
