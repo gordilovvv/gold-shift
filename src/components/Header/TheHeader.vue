@@ -37,6 +37,8 @@ onMounted(() => {
             ScrollTrigger.create({
                 trigger: id,
                 start: 'top top+=5%',
+                end: 'bottom-=5%',
+                markers: true,
                 onEnter: () => onEnter(index),
                 onLeave: () => onLeave(), 
                 onEnterBack: () => onEnter(index),
