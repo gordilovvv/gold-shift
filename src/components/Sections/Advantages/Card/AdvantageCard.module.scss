@@ -10,34 +10,34 @@
     --y: calc((var(--cursor-y) * 1px));
     --x: calc((var(--cursor-x) * 1px));
 
-    &::before {
-        content: "";
-        pointer-events: none;
-        user-select: none;
-        position: absolute;
-        inset: 0px;
-        border-radius: inherit;
-        opacity: var(--border-shine-opacity);
-        transition: opacity 400ms ease 0s;
-        will-change: opacity;
-        background: radial-gradient(800px circle at var(--x) var(--y),rgba(166, 194, 255, 0.3),transparent 40%);
-    }
+    // &::before {
+    //     content: "";
+    //     pointer-events: none;
+    //     user-select: none;
+    //     position: absolute;
+    //     inset: 0px;
+    //     border-radius: inherit;
+    //     opacity: var(--border-shine-opacity);
+    //     transition: opacity 400ms ease 0s;
+    //     will-change: opacity;
+    //     background: radial-gradient(800px circle at var(--x) var(--y),rgba(91, 144, 255, 0.4),transparent 40%);
+    // }
 }
 
-.shine {
-    position: absolute;
-    top: var(--border);
-    bottom: var(--border);
-    left: var(--border);
-    right: var(--border);
-    border-radius: var(--radius);
-    pointer-events: none;
-    will-change: opacity;
-    background: radial-gradient(400px circle at var(--x) var(--y),rgba(166, 194, 255, 0.08), transparent);
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 400ms ease 0s;
-}
+// .shine {
+//     position: absolute;
+//     top: var(--border);
+//     bottom: var(--border);
+//     left: var(--border);
+//     right: var(--border);
+//     border-radius: var(--radius);
+//     pointer-events: none;
+//     will-change: opacity;
+//     background: radial-gradient(400px circle at var(--x) var(--y),rgba(91, 144, 255, 0.08), transparent);
+//     z-index: 2;
+//     opacity: 0;
+//     transition: opacity 400ms ease 0s;
+// }
 
 .card:hover .shine {
     opacity: 1;

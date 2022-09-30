@@ -1,40 +1,46 @@
-<script setup lang="ts">
-import { onBeforeUpdate } from 'vue';
+<script setup>
+import { onMounted } from 'vue';
 import VContainer from '../../Container/VContainer.vue';
 import SectionTitle from '@/components/Title/SectionTitle';
 import AdvantageCard from './Card/AdvantageCard.vue';
 import { advantages } from '@/config/advantages';
+import { gsap } from 'gsap';
+import { useTemplateRefs } from '@/hooks/useTemplateRefs';
 
-let cardsRefs: Record<string, InstanceType<typeof AdvantageCard>> = {};
+const { templateRefs, handleTemplateRefMount } = useTemplateRefs();
 
-onBeforeUpdate(() => {
-    cardsRefs = {};
-});
-
-const handleMouseMove = (e: MouseEvent) => {
-    const cards = Object.entries(cardsRefs);
-
-    cards.map(([ key, card ]) => {
-        const rect = card.getBoundingClientRect();
-
-        if (rect) {
-            const top = parseFloat((e.clientY - rect.top).toFixed(3));
-            const left = parseFloat((e.clientX - rect.left).toFixed(3));
-
-            cardsRefs[key].setCursorCoords(left, top);
+onMounted(() => {
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.js-advantages',
+            start: 'top bottom',
+            end: 'bottom bottom',
+            scrub: true
         }
     });
-};
 
-const handleCardRefMount = (key: string, component: any) => {
-    cardsRefs[key] = component;
-};
+    const cards = Object.entries(templateRefs);
+
+    let position = 0;
+
+    cards.forEach(([index, { $el: card }]) => {
+        position += (index % 2) === 0 ? 0.5 : 0;
+
+        tl.from(card, {
+            y: 80,
+            x: (index % 2) === 0 ? -20 : 20,
+            stagger: 0.2,
+            ease: 'none'
+        }, position);
+    });
+});
 </script>
 
 <template>
     <div
         id="advantages"
         :class="styles.advantages"
+        class="js-advantages"
     >
         <VContainer>
             <div :class="styles.head">
@@ -43,14 +49,11 @@ const handleCardRefMount = (key: string, component: any) => {
                 </SectionTitle>
             </div>
 
-            <div
-                :class="styles.grid"
-                @mousemove="handleMouseMove"
-            >
+            <div :class="styles.grid">
                 <AdvantageCard
-                    v-for="({ key, title, description, image }) in advantages"
+                    v-for="({ key, title, description, image }, index) in advantages"
                     :key="key"
-                    :ref="component => handleCardRefMount(key, component)"
+                    :ref="component => handleTemplateRefMount(index, component)"
                     :title="title"
                     :description="description"
                     :image="image"
