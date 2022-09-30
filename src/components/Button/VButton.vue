@@ -1,19 +1,29 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 type VButtonProps = {
     view: 'inverse'
+    href?: string
 }
 
-withDefaults(defineProps<VButtonProps>(), {
-    view: 'inverse'
+const props = withDefaults(defineProps<VButtonProps>(), {
+    view: 'inverse',
+    href: undefined
 });
+
+const tag = computed(() => props.href ? 'a' : 'button');
 </script>
 
 <template>
-    <button :class="[styles.button, styles[view]]">
+    <Component
+        :is="tag"
+        :class="[styles.button, styles[view]]"
+        :href="href"
+    >
         <span :class="styles.buttonContent">
             <slot />
         </span>
-    </button>
+    </Component>
 </template>
 
 <style lang="scss" module="styles">

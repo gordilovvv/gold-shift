@@ -1,6 +1,11 @@
-<script setup lang="ts">
+<script setup>
 import VIcon from '../Icon/VIcon';
 import { TELEGRAM } from '@/config';
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { onMounted, ref } from 'vue';
+
+gsap.registerPlugin(ScrollTrigger);
     
 const nav = [
     {
@@ -17,8 +22,47 @@ const nav = [
     }
 ];
 
-const handleNavItemClick = (e: Event) => {
-    (e.target as HTMLLinkElement).scrollIntoView({ behavior: 'smooth' });
+const active = ref(null);
+
+onMounted(() => {
+    setTimeout(() => {
+        const onEnter = index => {
+            active.value = index;
+        };
+        const onLeave = () => {
+            active.value = null;
+        };
+
+        nav.forEach(({ id }, index) => {
+            ScrollTrigger.create({
+                trigger: id,
+                start: 'top top+=5%',
+                onEnter: () => onEnter(index),
+                onLeave: () => onLeave(), 
+                onEnterBack: () => onEnter(index),
+                onLeaveBack: () => onLeave(),
+            });
+        });
+    }, 200);
+});
+
+const handleNavItemClick = e => {
+    const hash = e.currentTarget.getAttribute('href');
+    const elem = hash ? document.querySelector(hash) : false;
+
+    const scrollTop = window.scrollY;
+    const scrollTarget = elem.offsetTop;
+
+    if(elem) {
+        if (e) {
+            e.preventDefault();
+        }
+
+        gsap.to(window, {
+            scrollTo: elem,
+            duration: Math.max(Math.abs(scrollTarget - scrollTop) / 4000, 0.4)
+        });
+    }
 };
 </script>
 
@@ -34,10 +78,10 @@ const handleNavItemClick = (e: Event) => {
 
         <div :class="styles.nav">
             <a
-                v-for="item in nav"
+                v-for="(item, index) in nav"
                 :key="item.id"
                 :href="item.id"
-                :class="styles.navItem"
+                :class="[styles.navItem, {[styles.active]: active === index }]"
                 @click.prevent="handleNavItemClick"
             >
                 <span :class="styles.navItemText">

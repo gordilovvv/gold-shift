@@ -74,6 +74,7 @@ onMounted(() => {
 
 <template>
     <div
+        id="guide"
         ref="wrap"
         :class="styles.wrap"
         class="js-guide-wrap"

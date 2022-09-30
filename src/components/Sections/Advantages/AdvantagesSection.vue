@@ -28,7 +28,7 @@ onMounted(() => {
 
         tl.from(card, {
             y: 80,
-            x: (index % 2) === 0 ? -20 : 20,
+            // x: (index % 2) === 0 ? -20 : 20,
             stagger: 0.2,
             ease: 'none'
         }, position);

@@ -4,6 +4,7 @@ import VButton from '../../Button/VButton.vue';
 import VIcon from '@/components/Icon/VIcon';
 import { onMounted } from 'vue';
 import { gsap } from 'gsap';
+import { AFFILIATE_LINK } from '@/config';
 
 onMounted(() => {
     const affiliate = document.querySelector('.js-affiliate');
@@ -77,7 +78,10 @@ onMounted(() => {
                     Получайте комиссию 0.25% за каждую сделку пользователя, который присоединился к Goldshift по вашей партнерской ссылке.
                 </div>
                 
-                <VButton view="inverse">
+                <VButton
+                    view="inverse"
+                    :href="AFFILIATE_LINK"
+                >
                     Участвовать
                 </VButton>
             </div>
