@@ -3,18 +3,18 @@ import SectionTitle from '@/components/Title/SectionTitle';
 import VButton from '../../Button/VButton.vue';
 import VIcon from '@/components/Icon/VIcon';
 import { onMounted } from 'vue';
+import { AFFILIATE_LINK } from '@/config';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { AFFILIATE_LINK } from '@/config';
 
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const affiliate = document.querySelector('.js-affiliate');
-    const ghosts = affiliate.querySelectorAll('.js-affiliate-ghost');
+    
+    const ghosts = document.querySelectorAll('.js-affiliate-ghost');
 
     const tl = gsap.timeline({
         scrollTrigger: {
-            trigger: affiliate,
+            trigger: '.js-affiliate',
             start: 'top bottom-=150',
             end: 'bottom bottom',
         }
