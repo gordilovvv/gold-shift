@@ -1,16 +1,18 @@
-import { createApp } from 'vue';
+// import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import ScrollToPlugin from 'gsap/ScrollToPlugin';
+// import router from './router';
+import { routes } from './router/index';
+import { ViteSSG } from 'vite-ssg';
 
 import './assets/scss/app.scss';
 
-const app = createApp(App);
+// const app = createApp(App);
 
-app.use(router);
+// app.use(router);
 
-app.mount('#app');
+// app.mount('#app');
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+export const createApp = ViteSSG(
+    App,
+    { routes }
+);
