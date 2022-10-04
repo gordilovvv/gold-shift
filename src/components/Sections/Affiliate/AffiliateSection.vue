@@ -4,9 +4,11 @@ import VButton from '../../Button/VButton.vue';
 import VIcon from '@/components/Icon/VIcon';
 import { onMounted } from 'vue';
 import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import { AFFILIATE_LINK } from '@/config';
 
 onMounted(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const affiliate = document.querySelector('.js-affiliate');
     const ghosts = affiliate.querySelectorAll('.js-affiliate-ghost');
 

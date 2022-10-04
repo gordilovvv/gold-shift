@@ -4,8 +4,6 @@ import { TELEGRAM } from '@/config';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { onMounted, ref } from 'vue';
-
-gsap.registerPlugin(ScrollTrigger);
     
 const nav = [
     {
@@ -25,6 +23,8 @@ const nav = [
 const active = ref(null);
 
 onMounted(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     setTimeout(() => {
         const onEnter = index => {
             active.value = index;

@@ -6,8 +6,6 @@ import SectionTitle from '@/components/Title/SectionTitle';
 import { currenciesList } from '@/config/currencies';
 import { onBeforeUpdate, onMounted } from 'vue';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const ROWS = 2;
 const currenciesRows = [...Array(ROWS).keys()].map(() => currenciesList);
 
@@ -63,6 +61,8 @@ let marqueeTl;
 const marqueeDirection = -1;
 
 onMounted(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     marqueeTl = marquee('.js-marquee-list', '.js-marquee-row', {
         addedTimeScale: {
             value: 0
