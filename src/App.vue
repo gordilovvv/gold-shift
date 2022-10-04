@@ -2,7 +2,7 @@
 import { onMounted, useCssModule } from 'vue';
 import TheHeader from './components/Header/TheHeader.vue';
 import TheFooter from './components/Footer/TheFooter.vue';
-import '@/scroll/ScrollSmoother.min.js';
+import ScrollSmoother from '@/scroll/ScrollSmoother.min.js';
 import gsap from 'gsap';
   
 const vars = useCssModule('vars');
@@ -12,10 +12,9 @@ if (typeof window !== 'undefined') {
 }
 
 onMounted(() => {
-    // eslint-disable-next-line no-undef
     gsap.registerPlugin(ScrollSmoother);
 
-    // eslint-disable-next-line no-undef
+    // @ts-ignore
     ScrollSmoother.create({
         smooth: 1,
         // normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
