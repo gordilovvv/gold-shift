@@ -114,7 +114,7 @@ const handleMouseLeave = (key) => {
     <div :class="styles.currencies">
         <div :class="styles.head">
             <SectionTitle badge="box">
-                Поддержка {{ currenciesList.length }} криптовалют
+                Поддержка <div :class="styles.titleRow">{{ currenciesList.length }} криптовалют</div>
             </SectionTitle>
         </div>
 

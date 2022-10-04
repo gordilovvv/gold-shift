@@ -73,3 +73,62 @@
         }
     }
 }
+
+@include max1200 {
+    .logo {
+        &Text {
+            font-size: 28px;
+        }
+    }
+}
+
+@include max1000 {
+    .logo {
+        &Text {
+            font-size: 26px;
+        }
+    }
+}
+
+@include max767 {
+    .footer {
+        padding: 20px;
+        margin: 0;
+    }
+
+    .top {
+        align-items: center;
+        padding-bottom: 20px;
+        margin-bottom: 40px;
+    }
+
+    .logo {
+        &Icon {
+            width: 44px;
+            height: 44px;
+            margin-right: 16px;
+
+            svg {
+                width: 24px;
+                height: 28px;
+            }
+        }
+        &Text {
+            font-size: 22px;
+        }
+    }
+
+    .bottom {
+        flex-flow: column-reverse;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .copyright {
+        font-size: 14px;
+    }
+    
+    .socials {
+        margin-bottom: 30px;
+    }
+}

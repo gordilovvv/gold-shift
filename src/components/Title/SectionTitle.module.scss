@@ -3,6 +3,7 @@
     font-size: var(--text-headline-l-font-size);
     font-weight: var(--text-headline-l-font-weight);
     line-height: var(--text-headline-l-line-height);
+    text-align: center;
     letter-spacing: -0.03em;
 
     span {
@@ -11,5 +12,15 @@
         left: calc(100% + 1px);
         display: flex;
         color: var(--color-project)
+    }
+}
+
+@include max767 {
+    .title {
+        span {
+            top: -30px;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
     }
 }

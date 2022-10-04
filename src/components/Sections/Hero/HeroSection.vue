@@ -13,7 +13,7 @@ onMounted(() => {
     // const phone = background.value.querySelector('.js-hero-phone');
     const cards = background.value.querySelectorAll('.js-hero-card');
 
-    media.add('(min-width: 1000px)', () => {
+    media.add('(min-width: 1201px)', () => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.js-hero',
@@ -50,7 +50,7 @@ onMounted(() => {
     >
         <VContainer :class="styles.container">
 
-            <h1 :class="styles.title">Telegram-бот для P2P торговли без <span :class="styles.gradient"><span>KYC</span> <VIcon name="kyc-gradient" /></span></h1>
+            <h1 :class="styles.title"> <span :class="styles.titleRow">Telegram-бот для</span> <span :class="styles.titleRow">P2P торговли</span> <span :class="styles.titleRow">без <span :class="styles.gradient"><span>KYC</span> <VIcon name="kyc-gradient" /></span></span></h1>
 
             <VButton
                 view="inverse"
@@ -99,6 +99,13 @@ onMounted(() => {
                 class="js-hero-card"
                 data-index="4"
                 style="background-image: url('/images/hero-card-4.png');"
+            />
+        </div>
+
+        <div :class="[styles.background, styles.backgroundAdaptive]">
+            <div
+                :class="styles.phoneAdaptive"
+                style="background-image: url('/images/hero-phone-adaptive.png')"
             />
         </div>
     </div>

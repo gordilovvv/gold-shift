@@ -35,3 +35,61 @@
     --text-caption-font-weight: 700;
     --text-caption-line-height: 1;
 }
+
+@include max1400 {
+    .decorations {
+        --text-title-m-font-size: 140px;
+        --text-title-s-font-size: 90px;
+    }
+}
+
+@include max1200 {
+    .decorations {
+        --text-title-m-font-size: 130px;
+        --text-title-s-font-size: 80px;
+    }
+}
+
+@include max1000 {
+    .decorations {
+        --text-title-m-font-size: 100px;
+        --text-title-s-font-size: 64px;
+
+        --text-headline-l-font-size: 38px;
+        --text-headline-m-font-size: 26px;
+        --text-headline-s-font-size: 20px;
+
+        --text-button-font-size: 18px;
+
+        --text-body-font-size: 16px;
+    }
+}
+
+@include max767 {
+    .decorations {
+        --text-title-m-font-size: 64px;
+
+        --text-title-s-font-size: 36px;
+        --text-title-s-line-height: 1.2;
+
+        --text-headline-l-font-size: 32px;
+        --text-headline-l-line-height: 1.3;
+
+        --text-headline-m-font-size: 22px;
+        --text-headline-m-line-height: 1.3;
+
+        --text-headline-s-font-size: 18px;
+        --text-headline-s-line-height: 1.3;
+
+        --text-button-font-size: 18px;
+
+        --text-body-font-size: 16px;
+    }
+}
+
+@include max360 {
+    .decorations {
+        --text-title-m-font-size: 60px;
+        --text-title-s-font-size: 32px;
+    }
+}

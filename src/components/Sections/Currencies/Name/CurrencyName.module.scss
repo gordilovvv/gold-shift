@@ -50,7 +50,7 @@
     }
 
     &.top {
-        top: 0;
+        top: 0px;
     }
     
     &.bottom {
@@ -65,5 +65,47 @@
 
     .icon svg {
         opacity: 1;
+    }
+}
+
+@include max1200 {
+    .icon {
+        width: 60px;
+        height: 60px;
+
+        svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        &.top {
+            top: -12px;
+        }
+
+        &.bottom {
+            bottom: -12px;
+        }
+    }
+}
+
+@include max1000 {
+    .currency {
+        margin-right: 40px;
+    }
+}
+
+@include max767 {
+    .currency {
+        margin-right: 26px;
+    }
+
+    .icon {
+        width: 40px;
+        height: 40px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
 }

@@ -66,7 +66,8 @@
 
 .phone,
 .card,
-.line {
+.line,
+.phoneAdaptive {
     position: absolute;
     background-position: center;
     background-size: 100%;
@@ -117,10 +118,94 @@
 
 .line {
     position: absolute;
+    max-width: 100%;
     top: 89px;
     left: 50%;
     transform: translate(-50%, 0);
     width: 1450px;
     height: 470px;
+    background-size: 1604px 470px;
     z-index: 3;
+}
+
+.backgroundAdaptive {
+    display: none;
+}
+
+.phoneAdaptive {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 375px;
+    max-width: 100%;
+    height: 560px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@include max1200 {
+    .hero {
+        padding: 200px 0 120px 0;
+    }
+
+    .container {
+        margin-bottom: 100px;
+    }
+
+    .title {
+        .gradient::before {
+            width: 350px;
+            height: 250px;
+        }
+    }
+
+    .background {
+        display: none;
+        height: 560px;
+
+        &Adaptive {
+            display: block;
+            overflow: hidden;
+        }
+    }
+}
+
+@include max1000 {
+    .hero {
+        padding: 190px 0 80px 0;
+    }
+
+    .title {
+        .gradient::before {
+            width: 320px;
+            height: 230px;
+        }
+    }
+}
+
+@include max767 {
+    .hero {
+        padding: 160px 0 50px 0;
+    }
+
+    .container {
+        margin-bottom: 50px;
+    }
+
+    .title {
+        max-width: 450px;
+        margin-bottom: 60px;
+
+        .gradient::before {
+            width: 200px;
+            height: 130px;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(122, 119, 254, 0.2) 0%, rgba(122, 119, 254, 0) 100%);
+        }
+
+        &Row {
+            display: block;
+        }
+    }
 }

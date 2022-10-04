@@ -21,7 +21,7 @@ onMounted(() => {
     const media = gsap.matchMedia();
     const items = wrap.value.querySelectorAll('.js-guide-row');
 
-    media.add('(min-width: 1000px)', () => {
+    media.add('(min-width: 1001px)', () => {
         scaleBg(0.95);
 
         const tl = gsap.timeline({

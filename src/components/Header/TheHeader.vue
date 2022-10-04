@@ -100,6 +100,10 @@ const handleNavItemClick = e => {
             <span :class="styles.buttonText">
                 {{ TELEGRAM.username }}
             </span>
+
+            <span :class="styles.buttonIcon">
+                <VIcon name="telegram" />
+            </span>
         </a>
 
     </div>

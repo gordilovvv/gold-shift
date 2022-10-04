@@ -72,8 +72,78 @@
     img {
         position: absolute;
         top: -11px;
-        right: 0;
+        right: -30px;
         height: 262px;
         max-width: 100%;
+    }
+}
+
+@include max1200 {
+    .row {
+        gap: 40px;
+    }
+
+    .image {
+        img {
+            right: -35px;
+        }
+    }
+}
+
+@include max1000 {
+    .row {
+        display: flex;
+        flex-flow: column;
+        height: auto;
+        gap: unset;
+        grid-template-columns: unset;
+        grid-template-areas: unset;
+        padding: 0 0 30px 0;
+
+        & + .row {
+            margin-top: 100px;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -80px;
+                height: 40px;
+            }
+        }
+    }
+
+    .number {
+        order: 1;
+        flex-shrink: 0;
+        margin-bottom: 20px;
+    }
+
+    .title {
+        order: 2;
+        flex-shrink: 0;
+        max-width: 400px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .image {
+        width: 100%;
+        height: 180px;
+        flex-shrink: 0;
+        order: 3;
+
+        img {
+            max-width: unset;
+            left: 50%;
+            transform: translate(-50%, 0);
+            right: unset;
+        }
+    }
+}
+
+@include max767 {
+    .number {
+        width: 48px;
+        height: 48px;
     }
 }

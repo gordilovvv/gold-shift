@@ -7,6 +7,7 @@
     position: relative;
     padding: 80px 0 120px 0;
     overflow: hidden;
+    transform: translateZ(0);
 }
 
 .background {
@@ -34,4 +35,23 @@
 .list {
     display: flex;
     flex-flow: column;
+}
+
+@include max1000 {
+    .background {
+        height: 100%;
+    }
+    
+    .guide {
+        padding: 40px 20px 20px 20px;
+        margin: 0 -20px;
+    }
+
+    .title {
+        margin: 0 -10px;
+    }
+
+    .head {
+        margin-bottom: 80px;
+    }
 }

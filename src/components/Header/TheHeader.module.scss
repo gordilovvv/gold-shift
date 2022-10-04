@@ -12,7 +12,6 @@
     z-index: 800;
 }
 
-
 .logo {
     position: relative;
     display: flex;
@@ -153,6 +152,10 @@
         position: relative;
     }
 
+    &Icon {
+        display: none;
+    }
+
     &::before {
         content: "";
         position: absolute;
@@ -173,6 +176,42 @@
                 opacity: 1;
                 transform: scale(1);
             }
+        }
+    }
+}
+
+@include max1400 {
+    .nav {
+        display: none;
+    }
+}
+
+@include max767 {
+    .header {
+        padding: 0 20px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+
+        svg {
+            width: 32px;
+            height: 37px;
+        }
+    }
+
+    .button {
+        width: 60px;
+        height: 60px;
+        padding: 0;
+
+        &Text {
+            display: none;
+        }
+
+        &Icon {
+            display: flex;
         }
     }
 }

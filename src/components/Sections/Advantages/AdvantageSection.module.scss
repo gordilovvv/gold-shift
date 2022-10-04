@@ -1,5 +1,5 @@
 .advantages {
-    margin-bottom: 180px;
+    margin-bottom: 140px;
 }
 
 .head {
@@ -12,11 +12,21 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
-    --border-shine-opacity: 0;
+}
 
-    @include hover {
-        &:hover {
-            --border-shine-opacity: 1;
-        }
+@include max1200 {
+    .advantages {
+        margin-bottom: 100px;
+    }
+    
+    .head {
+        margin-bottom: 60px;
+    }
+}
+
+@include max767 {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }

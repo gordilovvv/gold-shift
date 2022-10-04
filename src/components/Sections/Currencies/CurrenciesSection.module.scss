@@ -1,5 +1,6 @@
 .currencies {
     position: relative;
+    padding-top: 40px;
     padding-bottom: 40px;
     margin-bottom: 100px;
     overflow: hidden;
@@ -25,4 +26,10 @@
     flex-flow: row nowrap;
     align-items: center;
     will-change: transform;
+}
+
+@include max767 {
+    .titleRow {
+        display: block;
+    }
 }

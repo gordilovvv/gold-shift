@@ -10,28 +10,32 @@ import { useTemplateRefs } from '@/hooks/useTemplateRefs';
 const { templateRefs, handleTemplateRefMount } = useTemplateRefs();
 
 onMounted(() => {
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: '.js-advantages',
-            start: 'top bottom',
-            end: 'bottom bottom',
-            scrub: true
-        }
-    });
+    const media = gsap.matchMedia();
 
-    const cards = Object.entries(templateRefs);
+    media.add('(min-width: 1001px)', () => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.js-advantages',
+                start: 'top bottom',
+                end: 'bottom bottom',
+                scrub: true
+            }
+        });
 
-    let position = 0;
+        const cards = Object.entries(templateRefs);
 
-    cards.forEach(([index, { $el: card }]) => {
-        position += (index % 2) === 0 ? 0.5 : 0;
+        let position = 0;
 
-        tl.from(card, {
-            y: 80,
-            // x: (index % 2) === 0 ? -20 : 20,
-            stagger: 0.2,
-            ease: 'none'
-        }, position);
+        cards.forEach(([index, { $el: card }]) => {
+            position += (index % 2) === 0 ? 0.5 : 0;
+
+            tl.from(card, {
+                y: 80,
+                // x: (index % 2) === 0 ? -20 : 20,
+                stagger: 0.2,
+                ease: 'none'
+            }, position);
+        });
     });
 });
 </script>
