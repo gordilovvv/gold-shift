@@ -3,17 +3,17 @@ import { onMounted, useCssModule } from 'vue';
 import TheHeader from './components/Header/TheHeader.vue';
 import TheFooter from './components/Footer/TheFooter.vue';
 import ScrollSmoother from '@/scroll/ScrollSmoother.min.js';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { gsap } from 'gsap';
   
 const vars = useCssModule('vars');
   
 if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
     document.body.classList.add(...Object.values(vars));
 }
 
 onMounted(() => {
-    gsap.registerPlugin(ScrollSmoother);
-
     // @ts-ignore
     ScrollSmoother.create({
         smooth: 1,

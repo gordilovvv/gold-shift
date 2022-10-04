@@ -5,29 +5,28 @@ import VIcon from '@/components/Icon/VIcon';
 import { onMounted } from 'vue';
 import { AFFILIATE_LINK } from '@/config';
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 onMounted(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    
-    const ghosts = document.querySelectorAll('.js-affiliate-ghost');
+    setTimeout(() => {
+        const ghosts = document.querySelectorAll('.js-affiliate-ghost');
 
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: '.js-affiliate',
-            start: 'top bottom-=150',
-            end: 'bottom bottom',
-        }
-    });
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.js-affiliate',
+                start: 'top bottom-=150',
+                end: 'bottom bottom',
+            }
+        });
 
-    ghosts.forEach(ghost => {
-        tl.from(ghost, {
-            scale: 0,
-            ease: 'none',
-            stagger: 0.1,
-            duration: 0.2
-        }, '+=0.18');
-    });
+        ghosts.forEach((ghost, index) => {
+            tl.from(ghost, {
+                scale: 0,
+                ease: 'none',
+                stagger: 0.1,
+                duration: 0.2
+            }, `${ 0.18 * index }`);
+        });
+    }, 20);
 });
 </script>
 

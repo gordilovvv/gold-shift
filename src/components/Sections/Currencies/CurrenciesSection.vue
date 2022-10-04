@@ -1,6 +1,5 @@
 <script setup>
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import CurrencyName from './Name/CurrencyName.vue';
 import SectionTitle from '@/components/Title/SectionTitle';
 import { currenciesList } from '@/config/currencies';
@@ -18,7 +17,6 @@ onBeforeUpdate(() => {
 const handleCurrencyMount = (key, ref) => {
     currenciesRefs[key] = ref;
 };
-
 
 const marquee = (list, row, {
     addedTimeScale,
@@ -61,15 +59,15 @@ let marqueeTl;
 const marqueeDirection = -1;
 
 onMounted(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    
-    marqueeTl = marquee('.js-marquee-list', '.js-marquee-row', {
-        addedTimeScale: {
-            value: 0
-        },
-        direction: marqueeDirection,
-        duration: 18
-    });
+    setTimeout(() => {
+        marqueeTl = marquee('.js-marquee-list', '.js-marquee-row', {
+            addedTimeScale: {
+                value: 0
+            },
+            direction: marqueeDirection,
+            duration: 18
+        });
+    }, 20);
 });
 
 let hoverAnim = null;

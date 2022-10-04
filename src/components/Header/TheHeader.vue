@@ -23,8 +23,6 @@ const nav = [
 const active = ref(null);
 
 onMounted(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    
     setTimeout(() => {
         const onEnter = index => {
             active.value = index;
