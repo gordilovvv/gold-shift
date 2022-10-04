@@ -2,7 +2,7 @@
 import VIcon from '../Icon/VIcon';
 import { TELEGRAM } from '@/config';
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { onMounted, ref } from 'vue';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,8 +36,8 @@ onMounted(() => {
         nav.forEach(({ id }, index) => {
             ScrollTrigger.create({
                 trigger: id,
-                start: 'top top+=5%',
-                end: 'bottom-=5%',
+                start: 'top+=20% bottom',
+                end: `bottom+=${ index === 2 ? 50 : 0}% bottom`,
                 onEnter: () => onEnter(index),
                 onLeave: () => onLeave(), 
                 onEnterBack: () => onEnter(index),

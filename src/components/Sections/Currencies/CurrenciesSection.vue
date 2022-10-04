@@ -1,6 +1,6 @@
 <script setup>
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import CurrencyName from './Name/CurrencyName.vue';
 import SectionTitle from '@/components/Title/SectionTitle';
 import { currenciesList } from '@/config/currencies';
