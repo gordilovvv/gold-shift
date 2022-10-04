@@ -3,7 +3,7 @@ import { onMounted, useCssModule } from 'vue';
 import TheHeader from './components/Header/TheHeader.vue';
 import TheFooter from './components/Footer/TheFooter.vue';
 import ScrollSmoother from '@/scroll/ScrollSmoother.min.js';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
   
 const vars = useCssModule('vars');
   

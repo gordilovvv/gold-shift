@@ -4,7 +4,7 @@ import VButton from '../../Button/VButton.vue';
 import VIcon from '@/components/Icon/VIcon';
 import { onMounted } from 'vue';
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { AFFILIATE_LINK } from '@/config';
 
 onMounted(() => {
