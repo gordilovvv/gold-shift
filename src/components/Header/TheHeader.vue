@@ -1,9 +1,11 @@
 <script setup>
 import VIcon from '../Icon/VIcon';
 import { TELEGRAM } from '@/config';
-import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { onMounted, ref } from 'vue';
+import { inject, onMounted, ref } from 'vue';
+import { gsap } from 'gsap';
+
+const gsapPlugins = inject('gsapPlugins', {});
     
 const nav = [
     {
@@ -21,6 +23,7 @@ const nav = [
 ];
 
 const active = ref(null);
+const isScrolling = ref(false);
 
 onMounted(() => {
     setTimeout(() => {
@@ -42,7 +45,7 @@ onMounted(() => {
                 onLeaveBack: () => onLeave(),
             });
         });
-    }, 200);
+    }, 100);
 });
 
 const handleNavItemClick = e => {
@@ -53,20 +56,24 @@ const handleNavItemClick = e => {
     const scrollTarget = elem.offsetTop;
 
     if(elem) {
-        if (e) {
-            e.preventDefault();
-        }
+        e.preventDefault();
 
-        gsap.to(window, {
-            scrollTo: elem,
-            duration: Math.max(Math.abs(scrollTarget - scrollTop) / 4000, 0.4)
+        gsap.to(gsapPlugins.scrollSmoother, {
+            scrollTop: Math.min(ScrollTrigger.maxScroll(window), gsapPlugins.scrollSmoother.offset(elem, 'top-=150px top')),
+            duration: Math.max(Math.abs(scrollTarget - scrollTop) / 4000, 0.8),
+            onStart: () => isScrolling.value = true,
+            onComplete: () => isScrolling.value = false
         });
     }
 };
 </script>
 
 <template>
-    <div :class="styles.header">
+    <div
+        :class="[styles.header, {
+            [styles.scrolling]: isScrolling
+        }]"
+    >
         
         <a
             href="/"

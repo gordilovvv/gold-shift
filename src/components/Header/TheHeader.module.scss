@@ -127,6 +127,21 @@
     }
 }
 
+.header.scrolling {
+    .navItem {
+        @include hover {
+            &:hover {
+                color: var(--color-typo-base);
+
+                &::before {
+                    opacity: 0;
+                    transform: scale(0.86);
+                }
+            }
+        }
+    }
+}
+
 .button {
     position: relative;
     display: flex;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, useCssModule } from 'vue';
+import { onMounted, provide, useCssModule } from 'vue';
 import TheHeader from './components/Header/TheHeader.vue';
 import TheFooter from './components/Footer/TheFooter.vue';
 import ScrollSmoother from '@/scroll/ScrollSmoother.min.js';
@@ -13,21 +13,25 @@ if (typeof window !== 'undefined') {
     document.body.classList.add(...Object.values(vars));
 }
 
+const gsapPlugins = {};
+
 onMounted(() => {
     // @ts-ignore
-    ScrollSmoother.create({
+    gsapPlugins.scrollSmoother = ScrollSmoother.create({
         smooth: 1,
         // normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
         // ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
         // effects: true,
     });
 });
+
+provide('gsapPlugins', gsapPlugins);
 </script>
   
 <template>
+    <TheHeader />
     <div id="smooth-wrapper">
         <div id="smooth-content">
-            <TheHeader />
             <RouterView />
             <TheFooter />
         </div>
