@@ -36,7 +36,7 @@
         border-radius: 24px;
         transform: scale(1);
         will-change: transform;
-        transition: all .2s cubic-bezier(0,0,0.58,1);
+        transition: all .2s cubic-bezier(0, 0, 0.58, 1);
     }
 
     svg {
@@ -76,7 +76,7 @@
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         transition: color 0.15s;
 
-        & + & {
+        &+& {
             margin-left: 5px;
         }
 
@@ -87,6 +87,7 @@
             line-height: var(--text-caption-line-height);
             letter-spacing: -0.03em;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         &::before {
@@ -101,13 +102,13 @@
             border-radius: 18px;
             transform: scale(0.86);
             will-change: transform;
-            transition: all 0.20s cubic-bezier(0,0,0.58,1), opacity 0.15s;
+            transition: all 0.20s cubic-bezier(0, 0, 0.58, 1), opacity 0.15s;
         }
 
         @include hover {
             &:hover {
                 color: var(--color-typo-inverse);
-                
+
                 &::before {
                     opacity: 1;
                     transform: scale(1);
@@ -118,7 +119,7 @@
         &.active {
             pointer-events: none;
             color: var(--color-typo-inverse);
-                
+
             &::before {
                 opacity: 1;
                 transform: scale(1);
@@ -186,7 +187,7 @@
     @include hover {
         &:hover {
             color: var(--color-typo-inverse);
-            
+
             &::before {
                 opacity: 1;
                 transform: scale(1);
@@ -196,6 +197,12 @@
 }
 
 @include max1400 {
+    .nav {
+        transform: translate(-55%, 0);
+    }
+}
+
+@include max1200 {
     .nav {
         display: none;
     }
