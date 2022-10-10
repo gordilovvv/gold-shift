@@ -19,6 +19,14 @@ export const currencies: Currency[] = [
     {
         name: 'Litecoin',
         icon: 'litecoin'
+    },
+    {
+        name: 'Ton',
+        icon: 'ton'
+    },
+    {
+        name: 'Aptos',
+        icon: 'aptos'
     }
 ];
 
