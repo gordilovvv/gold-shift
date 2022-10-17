@@ -1,16 +1,16 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import VContainer from '../../Container/VContainer.vue';
 import SectionTitle from '@/components/Title/SectionTitle';
 import AdvantageCard from './Card/AdvantageCard.vue';
 import { advantages } from '@/config/advantages';
 import { gsap } from 'gsap';
-import { useTemplateRefs } from '@/hooks/useTemplateRefs';
 
-const { templateRefs, handleTemplateRefMount } = useTemplateRefs();
+const advantagesEl = ref(null);
 
 onMounted(() => {
     const media = gsap.matchMedia();
+    const cards = advantagesEl.value.querySelectorAll('.js-advantage-card');
 
     media.add('(min-width: 1001px)', () => {
         const tl = gsap.timeline({
@@ -22,16 +22,17 @@ onMounted(() => {
             }
         });
 
-        const cards = Object.entries(templateRefs);
-
         let position = 0;
 
-        cards.forEach(([index, { $el: card }]) => {
+        gsap.set(cards, {
+            y: 80
+        });
+
+        cards.forEach((card, index) => {
             position += (index % 2) === 0 ? 0.5 : 0;
 
-            tl.from(card, {
-                y: 80,
-                // x: (index % 2) === 0 ? -20 : 20,
+            tl.to(card, {
+                y: 0,
                 stagger: 0.2,
                 ease: 'none'
             }, position);
@@ -43,8 +44,9 @@ onMounted(() => {
 <template>
     <div
         id="advantages"
-        :class="styles.advantages"
+        ref="advantagesEl"
         class="js-advantages"
+        :class="styles.advantages"
     >
         <VContainer>
             <div :class="styles.head">
@@ -55,12 +57,12 @@ onMounted(() => {
 
             <div :class="styles.grid">
                 <AdvantageCard
-                    v-for="({ key, title, description, image }, index) in advantages"
+                    v-for="({ key, title, description, image }) in advantages"
                     :key="key"
-                    :ref="component => handleTemplateRefMount(index, component)"
                     :title="title"
                     :description="description"
                     :image="image"
+                    class="js-advantage-card"
                 />
             </div>
         </VContainer>
